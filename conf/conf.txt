@@ -1,0 +1,40 @@
+#Command to run simulation: java -cp ... peersim.Simulator confFile
+random.seed         12345678901
+pushsum.error       1
+cycle.time          200
+operations.average  10
+network.size        100
+network.xgmmlfile   results/100barabasi.xgmml
+output.file         results/100barabasi.out
+reference.site      S-13
+simulation.cycles   10
+#p2p links per node
+init.0.k 10
+#control.dnet DynamicNetwork
+#control.dnet.add -1
+#control.dnet.minsize 2
+#control.dnet.from 5
+#control.dnet.until 55
+
+protocol.coord Peer
+protocol.link IdleProtocol
+
+init.0 Initializer
+init.0.protocol link
+init.0.coord_protocol coord
+
+FREQUENCY 1
+
+#############
+## CONTROL ##
+#############
+
+control.protocol Protocol
+control.protocol.peer Peer
+control.protocol.protocol link
+control.protocol.coord_protocol coord
+
+control.observer Observer
+control.measures.protocol link
+control.measures.coord_protocol coord
+
