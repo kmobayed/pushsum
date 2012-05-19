@@ -66,18 +66,29 @@ public class XGMMLParserSAX extends DefaultHandler{
                String tId = null;
                sId = attributes.getValue("source");
                tId = attributes.getValue("target");
-               ArrayList<String> tmpTarget=newEdges.get(sId);
-               if (tmpTarget==null)
+               ArrayList<String> tmpTarget1=newEdges.get(sId);
+               if (tmpTarget1==null)
                {
-                 tmpTarget=new ArrayList<String>();
-                 tmpTarget.add(tId);
+                 tmpTarget1=new ArrayList<String>();
+                 tmpTarget1.add(tId);
                }
                else
                {
-                    tmpTarget.add(tId);
+                    tmpTarget1.add(tId);
                }
 
-               newEdges.put(sId, tmpTarget);
+               ArrayList<String> tmpTarget2=newEdges.get(tId);
+               if (tmpTarget2==null)
+               {
+                 tmpTarget2=new ArrayList<String>();
+                 tmpTarget2.add(sId);
+               }
+               else
+               {
+                    tmpTarget2.add(sId);
+               }
+               newEdges.put(sId, tmpTarget1);
+               newEdges.put(tId, tmpTarget2);
                //System.out.println("S"+sId + "\t->\t" + "S"+tId);
             }
         }

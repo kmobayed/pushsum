@@ -187,12 +187,12 @@ public final class Initializer implements Control {
         {
             //FileHandler hand = new FileHandler("out.log");
             //hand.setFormatter(new LoggingSimpleFormatter());
-            Logger.getLogger("de.fuberlin.wiwiss.ng4j.semwebclient").setLevel(Level.ALL);
+            //Logger.getLogger("de.fuberlin.wiwiss.ng4j.semwebclient").setLevel(Level.ALL);
             //log.addHandler(hand);
           
             SemanticWebClient semweb = new SemanticWebClient();
-            semweb.getConfig().setValue( SemanticWebClientConfig.MAXSTEPS, "100" );
-            semweb.getConfig().setValue( SemanticWebClientConfig.TIMEOUT, "100000" );
+            semweb.getConfig().setValue( SemanticWebClientConfig.MAXSTEPS, "10" );
+            semweb.getConfig().setValue( SemanticWebClientConfig.TIMEOUT, "10000" );
             //this.log.debug("Ignored (maxsteps reached): " + uri);
             int count=0;
             String queryString =
@@ -221,17 +221,17 @@ public final class Initializer implements Control {
             String URI="";
             int cc=0;
 
-            System.out.println(semweb.successfullyDereferencedURIs().size());
+   //         System.out.println(semweb.successfullyDereferencedURIs().size());
 //            System.out.println(semweb.redirectedURIs().size());
 //            System.out.println(semweb.successfullySearchedURIs().size());
 //            System.out.println(semweb.unsuccessfullySearchedURIs().size());
 
-            for (Iterator<String> iter3=semweb.successfullyDereferencedURIs().iterator();iter3.hasNext();)
-                            {
-                                cc++;
-                                URI=iter3.next();
-                                System.out.println(cc+"\t"+URI);
-                            }
+//            for (Iterator<String> iter3=semweb.successfullyDereferencedURIs().iterator();iter3.hasNext();)
+//                            {
+//                                cc++;
+//                                URI=iter3.next();
+//                                System.out.println(cc+"\t"+URI);
+//                            }
             LinkTraversalValue=new Long(count);
             LinkTraversalTime=endTime-startTime;
         }
